@@ -1,0 +1,40 @@
+version: verification_v1
+data_root: ../omega_student_broadband_T260_v1
+sample_rate: 128
+channels: 260
+central_seconds: 240
+context_seconds: 10
+window_seconds: 10
+bands: [theta, alpha, beta]
+durations: [10, 30, 60]
+query_starts: [0, 60, 120, 180]
+split_seed: 1337
+seed: 1337
+normalization: window_channel_mad
+clip_mad: 8.0
+model:
+  spatial_per_band: 16
+  temporal_widths: [32, 48, 64, 64]
+  kernel: 7
+  dilations: [1, 1, 2, 4]
+  pool: 4
+  dropout: [0.10, 0.10, 0.15, 0.15]
+  embedding_dim: 128
+train:
+  epochs: 60
+  batches_per_epoch: 30
+  p_subjects: 16
+  windows_per_recording: 2
+  lr: 0.0003
+  weight_decay: 0.01
+  warmup_epochs: 5
+  margin: 0.2
+  aux_weight: 0.3
+  label_smoothing: 0.1
+  grad_clip: 2.0
+  eval_every: 2
+  patience_evaluations: 8
+  selection_duration: 30
+  channel_dropout: 0.05
+  gaussian_noise: 0.05
+  cpu_threads: 4

@@ -1,0 +1,9 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>V1 saved replay</title>
+<style>body{font:18px/1.6 system-ui;max-width:850px;margin:40px auto;padding:20px}pre{white-space:pre-wrap;background:#eef3f5;padding:20px}</style>
+<h1>V1: просмотр сохранённых решений</h1>
+<p>Эта страница объясняет подготовку настоящего локального демо. Само демо содержит сохранённые TEST-решения фазового метода и Siamese CNN. Модель в браузере не запускается; EEGNet/Graph относятся к отдельному V2 эксперименту.</p>
+<p>Из корня репозитория выполните в PowerShell:</p>
+<pre>py -3.10 -B tools\prepare_saved_demo.py --archive-root ..\deep_learning_extension
+Invoke-Item .\local_artifacts\verification_v1\report\demo.html</pre>
+<p>После подготовки HTML не требует Python, GPU или сети. Повторный импорт в занятую папку остановится; просто откройте уже созданный HTML. Нужен разрешённый локальный архив, полные индивидуальные scores в Git не включены.</p>
+</html>

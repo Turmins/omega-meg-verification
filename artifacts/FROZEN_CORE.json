@@ -1,0 +1,29 @@
+{
+  "schema": "publication_core_registry_v1",
+  "core_sha256": {
+    "src/omega_dl/data/index.py": "04299714cab6c3f4290bcccdc82b32ee26b15a9dbae829ed6c9ad858b78e8289",
+    "src/omega_dl/data/splits.py": "50b6e86c99b40f2c105132f919a650782cbb371dcf4d7833d6f479ce3332bbab",
+    "src/omega_dl/models/__init__.py": "a3ba1595c8d6408fc5939e32424e44f6f406f3f79776a17cffbe083215a5a97c",
+    "src/omega_dl/models/autoencoder.py": "02e389153cf801b8ad31a2d6b254e851d68d0b12b875b1ee0f2a8194efd3a8dd",
+    "src/omega_dl/models/blocks.py": "465e28f98c050b3bb0de2156a338317ed198cacbb4303954e0567c905fc765a7",
+    "src/omega_dl/models/heads.py": "44e01b08b49430d1e6f1500f95837dffa4969594b9155618638d0d1654581378",
+    "src/omega_dl/models/losses.py": "c35033bee3c6e7472248f4e103433bf8f35e115f4dba2494eafa9cde3172b0c6",
+    "src/omega_dl/models/siamese_cnn.py": "d8ee0996aa6a430c819c7e6765c5e839d7cd03047cea56ee82d4852e4d2a60e1",
+    "src/omega_dl/seeding.py": "85fd8be431666a68eadf39b5a306d0159506b34090b18f3d03183a5e1fb5d545",
+    "src/omega_dl/verification/__init__.py": "129f579042fd74830d85434f09a0841bfa6504b9685ea46993b292aae67ab3d6",
+    "src/omega_dl/verification/experiment.py": "2cc7de7fba11191330bc0dcd1e12eed1a1431202dd34b02880b07c9ca00fc501",
+    "src/omega_dl/verification/preprocessing.py": "868e4d18fcfd01d257a49a8e816daa7be39558de7d7fa71cecee07b6f6012283",
+    "src/omega_dl/verification/protocol.py": "7ef55084c7caa8347b3f09c74fb74977c384ca4e45f8b0b07f18e6f616015ac3",
+    "src/omega_dl/verification/scoring.py": "6b8ced77ed120fbfc9503cafc391e04724a6acae90c93e9aab793ab6a426f61b",
+    "src/omega_dl/adaptive_verification/evaluation.py": "2e0cc491793718ef64ed6c91ce5f9cd46a8112d8afbdb6f18a9cf3e71849ef50",
+    "src/omega_dl/adaptive_verification/experiment.py": "fbda98c6a2554bb9c91e98f7a78cdca84dd530d4196bfe80a388120f13f15d79",
+    "src/omega_dl/adaptive_verification/features.py": "3ff08fbbc7d57373c1d850c87e658182d688604a8c95ae9a982a47fc827719f7",
+    "src/omega_dl/adaptive_verification/models.py": "215a27a8e5efd3e20ec54c4cc567276d8731363d4ee7e26b7a93dcdfa15e4dc6",
+    "src/omega_dl/adaptive_verification/online.py": "d6bc418e7d5440e0bd87f8a606f3d1a7282a6d0ef0af8d236573f5d26a51f0ee",
+    "src/omega_dl/adaptive_verification/protocol.py": "f9df015d8240c5fc413291d180323a208a9453ab166f29905405126004278f7f",
+    "src/omega_dl/paths.py": "667be3537e0ca222892aab94aadb45bc60c2c4e390fe4c8981c2e948444393ec"
+  },
+  "reference_sha256": {
+    "baseline_reference/omega_phasor_student_multiband_T240_v1.py": "dd9e35538684eee2b7c368b8b853d70ce63c988bbc098273d548275dec6b3726"
+  }
+}

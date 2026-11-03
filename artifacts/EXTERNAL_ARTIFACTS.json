@@ -1,0 +1,55 @@
+{
+  "source_archive_default_relative": "../deep_learning_extension",
+  "dataset_default_relative": "../omega_student_broadband_T260_v1",
+  "dataset_files_expected": 120,
+  "signal_array_shape": [
+    260,
+    33280
+  ],
+  "dtype": "float32",
+  "sample_rate_Hz": 128,
+  "metadata": {
+    "README.txt": {
+      "sha256": "143ce936a757d173b9bc1180ffb031561c8fe84a685caf69a8ab7ff04a3e0839",
+      "size_bytes": 2007
+    },
+    "protocol_FROZEN.json": {
+      "sha256": "bd05b32da0c4ed6ecddba3fd7b92b1ad0f9834d1bbbabe6da18a15dd55c838e1",
+      "size_bytes": 1911
+    },
+    "channels.txt": {
+      "sha256": "632bac0f4f809e5af0394df6ab640e4c9913333f856c51be96967eb8f3263a3a",
+      "size_bytes": 1820
+    },
+    "recording_index.csv": {
+      "sha256": "e1190ba4a1aa791a868189430e55dc6cc303c2e140a8ff3ff80b1bdf00b86c23",
+      "size_bytes": 33741
+    },
+    "cache_manifest.csv": {
+      "sha256": "fdb280a148a32675cd331b96f31aa917cad2956253d5ebe867a4a4d89866621f",
+      "size_bytes": 30077
+    }
+  },
+  "saved_V1_demo_files": {
+    "demo.html": {
+      "source_relative_path": "outputs/verification_v1/report/demo.html",
+      "sha256": "5259217a2e868d74f99678860d88fdb23a9b5f5f82d0a0f5d68a40806a234c1b",
+      "size_bytes": 933668
+    },
+    "report.html": {
+      "source_relative_path": "outputs/verification_v1/report/report.html",
+      "sha256": "3851b7ba82c8e703258860591d5f17a031f5c6792ad09da8e0c42ecbf602813e",
+      "size_bytes": 611896
+    },
+    "summary.csv": {
+      "source_relative_path": "outputs/verification_v1/report/summary.csv",
+      "sha256": "6222e3f8a97648e07a5bcc11d8dff8b2d52655dee249861e7bd6db95148a7f7b",
+      "size_bytes": 1817
+    }
+  },
+  "weights_and_runs_not_tracked": [
+    "outputs/verification_v1",
+    "outputs/adaptive_v2"
+  ],
+  "policy": "No signals, weights, participant-level score tables, enrollment profiles, historical approvals or correspondence are bundled in Git."
+}
