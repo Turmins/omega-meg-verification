@@ -33,3 +33,7 @@ The staged artifact scan found no forbidden arrays/weights, participant-level CS
 ## Public demo update
 
 See [PUBLIC_DEMO_VALIDATION.md](PUBLIC_DEMO_VALIDATION.md) for the later bundled public demo, aggregate-only privacy tests and trained-weight release review. Earlier checks above refer to the private historical replay and remain preserved as historical evidence.
+
+## Update after user authorship clarification
+
+The preceding pending-weight statements describe the earlier review state. The user confirmed that weights were trained within this project and explicitly requested their inclusion. All 18 tensor state dictionaries are now copied byte-for-byte to weights/ and linked to original frozen SHA-256 in weights/manifest.json. No raw MEG, individual scores, participant embeddings or personal templates are included. Checkpoint files form complete folds 00-05 for V1, EEGNet and Graph; frozen core remains unchanged. No further training or lengthy computation was run for this final inclusion. See weights/README.md and PUBLIC_ARTIFACTS.md for the current scope.

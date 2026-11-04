@@ -43,7 +43,7 @@ footer{margin-top:28px;font-size:14px;color:var(--muted)}@media(max-width:650px)
 <div id="decision" class="decision" aria-live="polite"></div><p id="explanation"></p>
 <small>Правило: <code>score &gt;= threshold</code> → принять. Истина не входит в это правило: она нужна лишь для оценки ошибки. Similarity score не является вероятностью.</small>
 </section>
-<footer>Источник агрегатов: три CSV в <code>results/</code> этого репозитория. Демо не меняет научные результаты или пороги. Полный исторический replay и обученные веса пока остаются локальными кандидатами до подтверждения условий распространения.</footer>
+<footer>Источник агрегатов: три CSV в <code>results/</code> этого репозитория. Демо не меняет научные результаты или пороги. Собственные обученные веса включены в weights/. Исходные MEG и полный индивидуальный replay остаются локальными и не входят в Git.</footer>
 </main><script id="public-aggregate-data" type="application/json">__PUBLIC_AGGREGATES__</script>
 <script>
 'use strict';

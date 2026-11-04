@@ -1,0 +1,329 @@
+{
+  "schema": "project_trained_weights_v1",
+  "authorship": "Trained within this educational project; independently checked training records, no external pretrained checkpoints found.",
+  "inclusion_basis": "User explicitly requested inclusion and confirmed that the weights were trained by this project.",
+  "scope": "Model tensor state dictionaries and BatchNorm buffers only; no participant records, templates, embeddings, raw MEG or individual scores.",
+  "dataset_terms": "Separate from model authorship. No weights-specific prohibition was found in the reviewed OMEGA web terms; this is not permission to redistribute the original dataset. Exact upstream release is not documented locally.",
+  "license": "Project/model license choice remains with the owner; none is invented here.",
+  "total_bytes": 3300786,
+  "files": [
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 61068,
+      "dtypes": {
+        "torch.float32": 18,
+        "torch.int64": 3
+      },
+      "fold": "fold_00",
+      "method": "eegnet",
+      "sha256": "8ad49c28c266432e47c23c5353e0e20c3e826c4301555514eecce5a26767e767",
+      "source_relative_path": "outputs/adaptive_v2/folds/fold_00/eegnet/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 21,
+      "tensor_elements": 13899,
+      "text_identifier_patterns": 0,
+      "path": "weights/eegnet/fold_00.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 69504,
+      "dtypes": {
+        "torch.float32": 23
+      },
+      "fold": "fold_00",
+      "method": "graph",
+      "sha256": "ddc3acc46160d9fed9e05a0c2aafc2bb4b59b4001cb813773bb90ecffa01062d",
+      "source_relative_path": "outputs/adaptive_v2/folds/fold_00/graph/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 23,
+      "tensor_elements": 16000,
+      "text_identifier_patterns": 0,
+      "path": "weights/graph/fold_00.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 61068,
+      "dtypes": {
+        "torch.float32": 18,
+        "torch.int64": 3
+      },
+      "fold": "fold_01",
+      "method": "eegnet",
+      "sha256": "75cf17f3295ec6b0a8f9adcc9c2f0c546a1b0c74e4ced1e92eeed9282748f7e9",
+      "source_relative_path": "outputs/adaptive_v2/folds/fold_01/eegnet/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 21,
+      "tensor_elements": 13899,
+      "text_identifier_patterns": 0,
+      "path": "weights/eegnet/fold_01.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 69504,
+      "dtypes": {
+        "torch.float32": 23
+      },
+      "fold": "fold_01",
+      "method": "graph",
+      "sha256": "2a19fa150d7fe367a81d77cadbfed3df4e32c6c2e8da291be4994622ccc9e2cd",
+      "source_relative_path": "outputs/adaptive_v2/folds/fold_01/graph/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 23,
+      "tensor_elements": 16000,
+      "text_identifier_patterns": 0,
+      "path": "weights/graph/fold_01.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 61068,
+      "dtypes": {
+        "torch.float32": 18,
+        "torch.int64": 3
+      },
+      "fold": "fold_02",
+      "method": "eegnet",
+      "sha256": "96017328acd9eb674f158372337f42028bff56a6f4f403d396ff9c39973a3ba2",
+      "source_relative_path": "outputs/adaptive_v2/folds/fold_02/eegnet/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 21,
+      "tensor_elements": 13899,
+      "text_identifier_patterns": 0,
+      "path": "weights/eegnet/fold_02.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 69504,
+      "dtypes": {
+        "torch.float32": 23
+      },
+      "fold": "fold_02",
+      "method": "graph",
+      "sha256": "727d8f8ef518059fe415b57c30f078578fffaf3859051017c089addf536cf64a",
+      "source_relative_path": "outputs/adaptive_v2/folds/fold_02/graph/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 23,
+      "tensor_elements": 16000,
+      "text_identifier_patterns": 0,
+      "path": "weights/graph/fold_02.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 61068,
+      "dtypes": {
+        "torch.float32": 18,
+        "torch.int64": 3
+      },
+      "fold": "fold_03",
+      "method": "eegnet",
+      "sha256": "ab40680c39f8e1ee28e85a2c1b479f1dc10ebe4333ed957a11324a419d44d703",
+      "source_relative_path": "outputs/adaptive_v2/folds/fold_03/eegnet/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 21,
+      "tensor_elements": 13899,
+      "text_identifier_patterns": 0,
+      "path": "weights/eegnet/fold_03.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 69504,
+      "dtypes": {
+        "torch.float32": 23
+      },
+      "fold": "fold_03",
+      "method": "graph",
+      "sha256": "1c8b0149fffda4070e1f61cc5517ef20062fee3e3313fbe3170d43e14497cb85",
+      "source_relative_path": "outputs/adaptive_v2/folds/fold_03/graph/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 23,
+      "tensor_elements": 16000,
+      "text_identifier_patterns": 0,
+      "path": "weights/graph/fold_03.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 61068,
+      "dtypes": {
+        "torch.float32": 18,
+        "torch.int64": 3
+      },
+      "fold": "fold_04",
+      "method": "eegnet",
+      "sha256": "e799b9168398850e3b88dc51689abc58d32ea3c900599d42753387f344379912",
+      "source_relative_path": "outputs/adaptive_v2/folds/fold_04/eegnet/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 21,
+      "tensor_elements": 13899,
+      "text_identifier_patterns": 0,
+      "path": "weights/eegnet/fold_04.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 69504,
+      "dtypes": {
+        "torch.float32": 23
+      },
+      "fold": "fold_04",
+      "method": "graph",
+      "sha256": "81a891b34e40991415f04630e6452483fb4cda9096e43fc45c926f9a7127737f",
+      "source_relative_path": "outputs/adaptive_v2/folds/fold_04/graph/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 23,
+      "tensor_elements": 16000,
+      "text_identifier_patterns": 0,
+      "path": "weights/graph/fold_04.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 61068,
+      "dtypes": {
+        "torch.float32": 18,
+        "torch.int64": 3
+      },
+      "fold": "fold_05",
+      "method": "eegnet",
+      "sha256": "d2e47163d651b68afc2b0ebe3b131934556d75d81c03f8ee2a072319e3240026",
+      "source_relative_path": "outputs/adaptive_v2/folds/fold_05/eegnet/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 21,
+      "tensor_elements": 13899,
+      "text_identifier_patterns": 0,
+      "path": "weights/eegnet/fold_05.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 69504,
+      "dtypes": {
+        "torch.float32": 23
+      },
+      "fold": "fold_05",
+      "method": "graph",
+      "sha256": "ae95569f2b9e490f2629d0e1685e1fe8bda09e99d1678d3b364228c3f1c8d352",
+      "source_relative_path": "outputs/adaptive_v2/folds/fold_05/graph/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 23,
+      "tensor_elements": 16000,
+      "text_identifier_patterns": 0,
+      "path": "weights/graph/fold_05.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 419559,
+      "dtypes": {
+        "torch.float32": 31,
+        "torch.int64": 6
+      },
+      "fold": "fold_00",
+      "method": "v1",
+      "sha256": "da64a247605b8d68d524fbd85af291a96f1a4399145d3772764c208a7cf9db13",
+      "source_relative_path": "outputs/verification_v1/folds/fold_00/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 37,
+      "tensor_elements": 102214,
+      "text_identifier_patterns": 0,
+      "path": "weights/v1/fold_00.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 419559,
+      "dtypes": {
+        "torch.float32": 31,
+        "torch.int64": 6
+      },
+      "fold": "fold_01",
+      "method": "v1",
+      "sha256": "0f2e1a175ef82853a1a3adf23305d1ad405a07ce7b45e347f3e04a3149748677",
+      "source_relative_path": "outputs/verification_v1/folds/fold_01/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 37,
+      "tensor_elements": 102214,
+      "text_identifier_patterns": 0,
+      "path": "weights/v1/fold_01.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 419559,
+      "dtypes": {
+        "torch.float32": 31,
+        "torch.int64": 6
+      },
+      "fold": "fold_02",
+      "method": "v1",
+      "sha256": "d46ab891d3bba3a6738c8faa0a36ae14829097dad393f132ae71b49705eb5f45",
+      "source_relative_path": "outputs/verification_v1/folds/fold_02/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 37,
+      "tensor_elements": 102214,
+      "text_identifier_patterns": 0,
+      "path": "weights/v1/fold_02.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 419559,
+      "dtypes": {
+        "torch.float32": 31,
+        "torch.int64": 6
+      },
+      "fold": "fold_03",
+      "method": "v1",
+      "sha256": "86dbc553b9f03dec483848858848f61f3e9fc93f0b86b28d50ae04671e926e7e",
+      "source_relative_path": "outputs/verification_v1/folds/fold_03/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 37,
+      "tensor_elements": 102214,
+      "text_identifier_patterns": 0,
+      "path": "weights/v1/fold_03.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 419559,
+      "dtypes": {
+        "torch.float32": 31,
+        "torch.int64": 6
+      },
+      "fold": "fold_04",
+      "method": "v1",
+      "sha256": "1d02730747f226a21b064ed1f836ffa57b4c533fdbd884b23c001c756f0740a0",
+      "source_relative_path": "outputs/verification_v1/folds/fold_04/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 37,
+      "tensor_elements": 102214,
+      "text_identifier_patterns": 0,
+      "path": "weights/v1/fold_04.pt"
+    },
+    {
+      "absolute_path_patterns": 0,
+      "all_tensors_finite": true,
+      "bytes": 419559,
+      "dtypes": {
+        "torch.float32": 31,
+        "torch.int64": 6
+      },
+      "fold": "fold_05",
+      "method": "v1",
+      "sha256": "8bb50fbbb57bac3847063f5b4df8d682dfdd35e84079bf0332fabb94d4011d78",
+      "source_relative_path": "outputs/verification_v1/folds/fold_05/best.pt",
+      "strict_architecture_load": true,
+      "tensor_count": 37,
+      "tensor_elements": 102214,
+      "text_identifier_patterns": 0,
+      "path": "weights/v1/fold_05.pt"
+    }
+  ]
+}

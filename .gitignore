@@ -18,3 +18,23 @@ dist/
 *.pem
 *.key
 *.log
+
+# Exact audited project-trained checkpoints only.
+!weights/eegnet/fold_00.pt
+!weights/graph/fold_00.pt
+!weights/eegnet/fold_01.pt
+!weights/graph/fold_01.pt
+!weights/eegnet/fold_02.pt
+!weights/graph/fold_02.pt
+!weights/eegnet/fold_03.pt
+!weights/graph/fold_03.pt
+!weights/eegnet/fold_04.pt
+!weights/graph/fold_04.pt
+!weights/eegnet/fold_05.pt
+!weights/graph/fold_05.pt
+!weights/v1/fold_00.pt
+!weights/v1/fold_01.pt
+!weights/v1/fold_02.pt
+!weights/v1/fold_03.pt
+!weights/v1/fold_04.pt
+!weights/v1/fold_05.pt

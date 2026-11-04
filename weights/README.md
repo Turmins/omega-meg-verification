@@ -1,33 +1,34 @@
-# Trained weights: local candidate, publication decision pending
+# Собственные обученные веса проекта
 
-The 18 trained best checkpoints are **not bundled in Git yet**. They have been
-prepared locally at `local_artifacts/release_candidates/trained_weights/`:
+Включены 18 `best.pt` state dictionaries без преобразования чисел:
 
-| Model | Folds | Bytes per checkpoint | Total |
-|---|---:|---:|---:|
-| V1 Siamese CNN | 6 | 419,559 | 2,517,354 |
-| EEGNet | 6 | 61,068 | 366,408 |
-| Graph | 6 | 69,504 | 417,024 |
-| All | 18 | | 3,300,786 |
+| Каталог | Folds | Общий размер |
+|---|---|---:|
+| `v1/` | `fold_00.pt` ... `fold_05.pt` | 2,517,354 bytes |
+| `eegnet/` | `fold_00.pt` ... `fold_05.pt` | 366,408 bytes |
+| `graph/` | `fold_00.pt` ... `fold_05.pt` | 417,024 bytes |
+| Все | 18 файлов | 3,300,786 bytes |
 
-Each file matches its frozen archive hash. The local `manifest.json` records the
-tensor audit and strict architecture loading. There are no text participant-ID
-or absolute-path patterns in the inspected checkpoint metadata. This does not
-prove that learned representations contain no participant information or establish
-redistribution rights. The checkpoints are trained on the supplied OMEGA export.
+Это результаты обучения в данном проекте. Проверены все training summaries,
+истории эпох, выбор checkpoint на DEV и соответствующие lock hashes. Загрузка
+каждого файла через `torch.load(..., weights_only=True, map_location='cpu')` и
+строгий `load_state_dict(..., strict=True)` в соответствующую архитектуру прошла.
+Все значения тензоров конечны, текстовые ID и абсолютные пути не обнаружены.
+V1 training-only classifier не сохранялся; Graph sensor embeddings относятся
+к 260 каналам, а не к участникам. Отдельные participant embeddings/score NPZ/CSV
+не включены. Проверка содержимого не является доказательством против memorization.
 
-For an authorized local copy, recreate the candidate with:
+`manifest.json` связывает каждый файл с SHA-256 исходного checkpoint. Численные
+формулы, frozen core и старые manifests не менялись. Для полного inference
+через `scripts/14` и `18` по реальным MEG по-прежнему нужны разрешённые входы,
+эталоны и совместимые frozen-протоколы/пороги согласно README.
 
-```powershell
-.\.venv\Scripts\python.exe -B tools\prepare_weight_candidates.py
+Пример чтения только параметров:
+```python
+import torch
+state = torch.load('weights/eegnet/fold_00.pt', map_location='cpu', weights_only=True)
 ```
 
-The tool uses `torch.load(..., weights_only=True, map_location='cpu')`, checks that
-all entries are finite tensors, and uses strict model-state loading. It does not
-train or run inference. It refuses an occupied candidate output; use a new ignored
-`--out local_artifacts/release_candidates/ANOTHER_NAME` if another inspection is needed.
-The immutable historical archive is never edited.
-
-The exact permission question and public demo scope are in
-[PUBLIC_ARTIFACTS.md](../docs/PUBLIC_ARTIFACTS.md). Do not force-add the private local
-candidate or recordings before resolving that question.
+Выбор лицензии собственных кода/весов остаётся за владельцем. Их включение не
+означает разрешения распространять исходный датасет или индивидуальные scores.
+GitHub push не выполнялся.
