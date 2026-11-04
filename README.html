@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Educational cross-session MEG verification: V1/V2, results, offline demo and Windows setup."><meta name="source-readme-sha256" content="35e487a3892bab5e510af59691340d1f2a484211e7eefee8868a0b20b8e37a10"><meta name="color-scheme" content="light"><title>MEG Verification · V1 / V2</title><style>
+:root{--ink:#20363b;--muted:#5c6d71;--accent:#12695e;--accent-dark:#084f48;--line:#dae3df;--paper:#fff;--canvas:#f4f7f4;--soft:#eaf2ec;--code:#172b32;--radius:16px;--sidebar:224px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:104px}body{margin:0;color:var(--ink);background:var(--canvas);font-family:Inter,"Segoe UI",Arial,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:4px}a:hover{color:var(--accent-dark)}button{font:inherit}a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid #c27925;outline-offset:4px}::selection{background:#c8e3d5}.skip-link{position:fixed;top:-80px;left:20px;z-index:100;background:#fff;padding:10px 16px;border:2px solid var(--accent)}.skip-link:focus{top:10px}
+.masthead{position:sticky;top:0;z-index:20;background:rgba(244,247,244,.97);border-bottom:1px solid var(--line)}.masthead-inner{max-width:1456px;margin:auto;min-height:78px;padding:12px 40px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);font-size:15px;font-weight:700;letter-spacing:.015em}.brand-mark{display:grid;place-items:center;width:38px;height:38px;background:var(--accent);color:#fff;border-radius:11px;font-size:29px;font-family:Georgia,serif;font-weight:400;line-height:1}.brand small{display:block;font-size:10px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;font-weight:600;line-height:1.5}.masthead-links{display:flex;align-items:center;gap:24px;font-size:13px;font-weight:600}.masthead-links a{text-decoration:none}.masthead-links .demo-link{padding:8px 15px;background:var(--accent);color:white;border-radius:7px}.progress{height:2px;position:absolute;bottom:-1px;left:0;width:0;background:var(--accent)}
+.layout{max-width:1456px;margin:0 auto;display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr);column-gap:52px;padding:0 40px}.sidebar{position:sticky;top:112px;align-self:start;padding:27px 0 42px;height:calc(100vh - 112px);overflow:auto}.side-kicker{font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin:0 0 17px 11px;font-weight:700}.section-nav{display:flex;flex-direction:column;gap:4px}.section-nav a{display:flex;align-items:baseline;gap:11px;padding:8px 10px;color:var(--muted);font-size:13px;line-height:1.45;text-decoration:none;border-left:2px solid transparent;border-radius:0 6px 6px 0}.section-nav a span{font-size:10px;color:#879791;font-variant-numeric:tabular-nums}.section-nav a:hover,.section-nav a.active{color:var(--accent-dark);background:var(--soft);border-color:var(--accent)}.side-note{margin:25px 10px 0;border-top:1px solid var(--line);padding-top:18px;font-size:11px;line-height:1.8;color:var(--muted)}.side-note strong{display:block;color:var(--ink);font-size:12px}.mobile-nav{display:none}.main{min-width:0;padding:52px 0 50px}
+.hero{position:relative;overflow:hidden;padding:0 0 36px;border-bottom:1px solid var(--line)}.eyebrow{color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.19em;font-weight:750;margin:0 0 20px;display:flex;align-items:center;gap:10px}.eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}h1{font-size:clamp(38px,4.4vw,66px);line-height:1.08;font-weight:650;letter-spacing:-.05em;margin:0 0 23px;max-width:740px}.hero-copy{position:relative;z-index:1}.hero-lead{font-size:20px;line-height:1.55;max-width:710px;margin:0 0 18px}.hero-lead strong{font-weight:450}.hero-description{max-width:720px;font-size:14px;line-height:1.8;color:var(--muted);margin:0 0 23px}.hero-description strong{color:var(--ink);font-weight:650}.jump-links{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0!important}.jump-links a{padding:7px 12px;border:1px solid #cddcd3;background:#fff;border-radius:7px;text-decoration:none;font-size:12px;font-weight:650;white-space:nowrap}.jump-links a:first-child{background:var(--accent);color:white;border-color:var(--accent)}.hero-art{position:absolute;right:-65px;top:-40px;width:310px;height:310px;opacity:.1;pointer-events:none;z-index:0}.doc-section{position:relative;padding:38px 0 15px;scroll-margin-top:90px}.doc-section+.doc-section{border-top:1px solid var(--line);margin-top:20px}h2{margin:0 0 22px;font-size:27px;letter-spacing:-.035em;line-height:1.3;font-weight:650;display:flex;align-items:baseline;gap:15px}h2:before{content:attr(data-number);font-size:11px;color:var(--accent);letter-spacing:.04em;font-weight:650}.doc-section>h2:before{content:attr(data-number)}h3{margin:35px 0 17px;font-size:18px;letter-spacing:-.02em;font-weight:650;line-height:1.5;padding-top:8px}p{margin:0 0 18px}strong{font-weight:650}ul{padding-left:21px;margin:0 0 21px}li{margin-bottom:7px}code{font-family:Consolas,"Cascadia Code",monospace;font-size:.86em;background:#e9efeb;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}a code{color:inherit}.callout{padding:20px 22px;border-radius:9px;border:1px solid #d3e2d8;background:#edf4ed;line-height:1.8;font-size:14px}.notice,.pending{background:#fcf6ea;border-color:#e9dcc1;color:#655032}.notice strong,.pending strong{color:#48391e}.test-machine{background:#eef2f3;border-color:#d8e0e2;font-size:13px;color:#4a5f65}.email-note{display:flex;align-items:center;gap:14px;background:#e6f1e8;border-color:#c5ddcb;font-size:17px;padding:22px}.email-note:before{content:"@";font-family:Georgia,serif;font-size:28px;color:var(--accent);line-height:1}.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:11px;margin:24px 0;background:white}table{border-collapse:collapse;width:100%;text-align:left;font-size:13px;line-height:1.65}th{background:#edf3ee;color:#3c5e52;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.035em}th,td{padding:13px 17px;border-bottom:1px solid #e3eae5;vertical-align:top}tr:last-child td{border-bottom:0}tbody tr:hover{background:#f7faf7}td code{font-size:11px;white-space:nowrap}#results td:not(:first-child){font-variant-numeric:tabular-nums}#results td strong{color:var(--accent);font-size:15px}.code-panel{margin:22px 0;border:1px solid #29434a;border-radius:10px;overflow:hidden;background:var(--code);box-shadow:0 5px 13px rgba(28,50,44,.04)}.code-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 16px;border-bottom:1px solid #30454b;min-height:41px;background:#20363d}.code-language{font-family:Consolas,"Cascadia Code",monospace;color:#9bbcaf;font-size:10px;letter-spacing:.08em;text-transform:uppercase}.copy-button{font-size:10px;color:#bacec6;border:1px solid #4b615e;background:transparent;border-radius:4px;padding:3px 9px;line-height:1.4;cursor:pointer}.copy-button:hover{color:white;border-color:#a6c5b8}.copy-button[hidden]{display:none}pre{margin:0;overflow-x:auto;padding:18px 20px;line-height:1.8;tab-size:4;scrollbar-color:#637c77 #172b32}pre code{font-family:Consolas,"Cascadia Code",monospace;font-size:12px;line-height:1.85;padding:0;border-radius:0;background:none;color:#e3eee8;overflow-wrap:normal;white-space:pre}.document{max-width:100%;font-size:15px}.document>section:first-child>p:first-of-type{font-size:21px;line-height:1.5;letter-spacing:-.02em;max-width:700px}.page-footer{border-top:1px solid var(--line);margin-top:40px;padding:25px 0 4px;display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;color:var(--muted);font-size:11px}.page-footer a{color:var(--muted)}
+@media(min-width:1300px){.layout{column-gap:72px}.main{padding-top:64px}}
+@media(max-width:1050px){.layout{--sidebar:190px;column-gap:30px;padding:0 28px}.masthead-inner{padding:12px 28px}.section-nav a{font-size:12px}.hero-art{right:-130px}.hero-lead{font-size:18px}.document{font-size:14px}h2{font-size:25px}}
+@media(max-width:820px){html{scroll-padding-top:80px}.masthead-inner{min-height:68px;padding:12px 22px}.masthead-links{gap:12px}.masthead-links>a:first-child{display:none}.layout{display:block;padding:0 22px}.sidebar{display:none}.main{padding-top:30px}.mobile-nav{display:block;border:1px solid var(--line);border-radius:8px;padding:0 13px;margin:0 0 30px;background:#fff}.mobile-nav summary{cursor:pointer;padding:10px 0;font-size:12px;font-weight:650;color:var(--accent)}.mobile-nav nav{padding:0 0 12px;display:grid;grid-template-columns:1fr 1fr;gap:4px}.mobile-nav nav a{font-size:11px}.mobile-nav nav a span{margin-right:8px;color:#8c9e94}.hero{padding-bottom:30px}.hero-art{display:none}h1{font-size:46px;max-width:600px}.hero-description{font-size:13px}.eyebrow{font-size:10px;margin-bottom:17px}.doc-section{padding-top:30px}h2{font-size:25px;gap:11px}h3{font-size:17px;margin-top:28px}.callout{padding:16px 17px}.table-scroll{margin:21px 0}th,td{padding:11px 13px}.document>section:first-child>p:first-of-type{font-size:19px}}
+@media(max-width:450px){body{line-height:1.7}.layout{padding:0 17px}.masthead-inner{padding:11px 17px}.brand{font-size:12px;gap:9px}.brand-mark{width:32px;height:32px;font-size:25px}.brand small{font-size:8px}.masthead-links{font-size:11px}.masthead-links .demo-link{padding:7px 10px}.hero-lead{font-size:17px}.hero-description{font-size:12px}h1{font-size:40px}.jump-links{gap:7px}.jump-links a{padding:6px 9px;font-size:10px}h2{font-size:23px}.document{font-size:14px}.email-note{font-size:15px}.test-machine{font-size:12px}pre{padding:15px}pre code{font-size:11px}th,td{padding:10px 12px}.mobile-nav nav{grid-template-columns:1fr}h2:before{font-size:10px}.page-footer{font-size:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{body{background:white;color:#111;font-size:10pt}.masthead,.sidebar,.mobile-nav,.copy-button,.hero-art,.progress,.jump-links,.skip-link{display:none!important}.layout{display:block;padding:0;max-width:none}.main{padding:0}.hero{padding-bottom:15px}h1{font-size:30pt}.hero-lead{font-size:13pt}.hero-description,.document{font-size:10pt}.doc-section{padding-top:22px}.doc-section+.doc-section{margin-top:10px}h2{font-size:17pt}h3{font-size:12pt}pre{white-space:pre-wrap;overflow:visible}pre code{white-space:pre-wrap;overflow-wrap:anywhere;color:#111;font-size:8pt}.code-panel{background:#f4f4f4;border:1px solid #aaa;box-shadow:none;break-inside:avoid}.code-toolbar{background:#eee;color:#111;border-color:#aaa}.code-language{color:#333}a{color:inherit}th{background:#eee}tr{break-inside:avoid}.table-scroll{overflow:visible}.callout{break-inside:avoid}.page-footer{margin-top:20px}}
+</style></head>
+<body id="top"><a class="skip-link" href="#documentation">Skip to documentation</a>
+<header class="masthead"><div class="masthead-inner"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">ω</span><span>MEG Verification<small>Educational research · V1 / V2</small></span></a><nav class="masthead-links" aria-label="Document links"><a href="README.md">Markdown source ↗</a><a class="demo-link" href="demo/index.html">Open offline demo <span aria-hidden="true">↗</span></a></nav></div><div class="progress" aria-hidden="true"></div></header>
+<div class="layout"><aside class="sidebar" aria-label="Contents"><p class="side-kicker">Inside this project</p><nav class="section-nav"><a href="#the-question"><span>01</span>The question</a><a href="#offline-demo"><span>02</span>Offline demo</a><a href="#quick-start"><span>03</span>Quick start</a><a href="#included-trained-weights"><span>04</span>Included trained weights</a><a href="#results"><span>05</span>Results</a><a href="#dataset-access"><span>06</span>Dataset access</a><a href="#reproducing-the-saved-experiments"><span>07</span>Reproducing the saved experiments</a><a href="#verification-status-and-boundaries"><span>08</span>Verification status and boundaries</a><a href="#repository-guide"><span>09</span>Repository guide</a><a href="#license"><span>10</span>License</a></nav><div class="side-note"><strong>Read locally. Explore offline.</strong>This HTML guide needs no server or network resources.</div></aside>
+<main class="main"><details class="mobile-nav"><summary>On this page</summary><nav class="section-nav" aria-label="Mobile contents"><a href="#the-question"><span>01</span>The question</a><a href="#offline-demo"><span>02</span>Offline demo</a><a href="#quick-start"><span>03</span>Quick start</a><a href="#included-trained-weights"><span>04</span>Included trained weights</a><a href="#results"><span>05</span>Results</a><a href="#dataset-access"><span>06</span>Dataset access</a><a href="#reproducing-the-saved-experiments"><span>07</span>Reproducing the saved experiments</a><a href="#verification-status-and-boundaries"><span>08</span>Verification status and boundaries</a><a href="#repository-guide"><span>09</span>Repository guide</a><a href="#license"><span>10</span>License</a></nav></details><div class="hero"><div class="eyebrow">Cross-session identity verification</div><div class="hero-copy"><h1 id="meg-verification-v1-v2">MEG Verification — V1 / V2</h1>
+<p class="hero-lead"><strong>An educational study of cross-session identity verification from short MEG recordings.</strong></p>
+<p class="hero-description">Code, <strong>18 project-trained checkpoints</strong>, an <strong>offline interactive demo</strong>, and saved aggregate results are included. Raw MEG recordings and participant-level score records are excluded.</p>
+<p class="jump-links" aria-label="Quick links"><a href="#offline-demo">Offline demo</a> <a href="#quick-start">Quick start</a> <a href="#results">Results</a> <a href="#dataset-access">Dataset</a> <a href="#reproducing-the-saved-experiments">Reproduction</a> </p>
+</div><svg class="hero-art" viewBox="0 0 320 320" fill="none" aria-hidden="true"><circle cx="160" cy="160" r="118" stroke="currentColor"/><circle cx="160" cy="160" r="90" stroke="currentColor" stroke-dasharray="3 8"/><ellipse cx="160" cy="160" rx="57" ry="118" stroke="currentColor"/><ellipse cx="160" cy="160" rx="118" ry="54" stroke="currentColor"/><path d="M24 161h30l9-12 10 24 10-46 12 70 13-45 13 9h19l9-16 11 28 11-37 12 55 13-42 11 12h19l8-11 10 23 9-12h37" stroke="currentColor" stroke-width="3"/><g fill="currentColor"><circle cx="160" cy="42" r="5"/><circle cx="160" cy="278" r="5"/><circle cx="42" cy="160" r="5"/><circle cx="278" cy="160" r="5"/><circle cx="76" cy="76" r="4"/><circle cx="244" cy="76" r="4"/><circle cx="76" cy="244" r="4"/><circle cx="244" cy="244" r="4"/></g></svg></div><article id="documentation" class="document"><section id="the-question" class="doc-section" aria-labelledby="the-question-heading" data-section="01"><h2 id="the-question-heading" data-number="01">The question</h2>
+<p><strong>Does this short recording match the claimed person's reference recording?</strong></p>
+<p>A shared encoder learns from training participants. At verification time, a reference template is compared with a query from another recording session; the system accepts or rejects the identity claim. No separate neural network is trained for each enrolled person.</p>
+<p>The experiments compare:</p>
+<ul>
+<li><strong>V1:</strong> a phase/coherency reference and a compact Siamese CNN.</li>
+<li><strong>V2:</strong> the phase reference, an EEGNet-inspired encoder and a sensor graph encoder, with static and adaptive reference policies.</li>
+</ul>
+<p>The supplied dataset contains <strong>60 participants with two recordings each</strong>. Six subject-disjoint folds use <strong>40 TRAIN / 10 DEV / 10 TEST</strong> participants. Both sessions stay in the same partition. Checkpoints and decision thresholds are selected on DEV and frozen before TEST evaluation of each run.</p>
+</section><section id="offline-demo" class="doc-section" aria-labelledby="offline-demo-heading" data-section="02"><h2 id="offline-demo-heading" data-number="02">Offline demo</h2>
+<p><strong>The fastest first run:</strong> obtain the complete project folder and open <strong><a href="demo/index.html"><code>demo/index.html</code></a></strong> in a browser. No installation is needed. In Windows PowerShell, replace the example folder below with your actual project folder:</p>
+<div class="code-panel"><div class="code-toolbar"><span class="code-language">PowerShell</span><button type="button" class="copy-button" aria-label="Copy PowerShell code" hidden="">Copy</button></div><pre><code class="language-powershell">Set-Location 'C:\work\omega-meg-verification'
+Invoke-Item .\demo\index.html
+</code></pre>
+</div><p>The Russian-language interface works <strong>without Python, GPU, model weights, a dataset download or network access</strong>. It provides:</p>
+<ul>
+<li><strong>Real saved aggregates:</strong> V1/V2, model, query duration, enrollment duration and update-policy selectors.</li>
+<li><strong>Synthetic decision examples:</strong> genuine acceptance, impostor rejection, false acceptance and false rejection.</li>
+</ul>
+<p class="callout notice">The example scores and thresholds are clearly illustrative. <strong>The browser does not run a neural network, replay individual TEST decisions or display actual DEV thresholds.</strong> Aggregate results and synthetic examples are separate parts of the page.</p>
+<p>GitHub's source-file view does not execute HTML: open the downloaded file locally. A hosted GitHub Pages demo has not been deployed.</p>
+</section><section id="quick-start" class="doc-section" aria-labelledby="quick-start-heading" data-section="03"><h2 id="quick-start-heading" data-number="03">Quick start</h2>
+<p>These instructions target <strong>Windows with PowerShell</strong>. Start with the offline demo above if you only want to view the results.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Quick start table"><table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>What you need</th>
+<th>Next step</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>View the interactive demo</td>
+<td>Complete project folder and a browser</td>
+<td><a href="#offline-demo">Offline demo</a></td>
+</tr>
+<tr>
+<td>Run unit tests</td>
+<td>Project folder and Python environment</td>
+<td>Steps 1-4 below</td>
+</tr>
+<tr>
+<td>Run real inference / verify saved results</td>
+<td>Environment, compatible dataset and historical run archive</td>
+<td>Then <a href="#reproducing-the-saved-experiments">restore the artifacts</a></td>
+</tr>
+</tbody>
+</table>
+</div><h3 id="open-the-project-folder">1. Open the project folder</h3>
+<p>Extract the complete source folder first. Open PowerShell and replace this example path with the folder containing <code>README.md</code>:</p>
+<div class="code-panel"><div class="code-toolbar"><span class="code-language">PowerShell</span><button type="button" class="copy-button" aria-label="Copy PowerShell code" hidden="">Copy</button></div><pre><code class="language-powershell">Set-Location 'C:\work\omega-meg-verification'
+Get-Item .\README.md, .\requirements-dev.txt, .\demo\index.html
+</code></pre>
+</div><p>All following commands run from this folder. You may use another drive or folder name. This is a <strong>source-checkout workflow</strong>: keep <code>src/</code>, <code>scripts/</code>, <code>configs/</code>, <code>weights/</code> and the reference asset together. Standalone wheel execution is not the supported workflow.</p>
+<h3 id="create-a-python-environment">2. Create a Python environment</h3>
+<p>Install <strong>64-bit Python 3.10</strong> from the <a href="https://www.python.org/downloads/release/python-31011/">official Python 3.10.11 release</a> (Windows installer, 64-bit), including the Python launcher. Reopen PowerShell after installation. Python 3.10.11 is the historical compatibility version used for host validation; newer Python versions have not been validated for this project.</p>
+<div class="code-panel"><div class="code-toolbar"><span class="code-language">PowerShell</span><button type="button" class="copy-button" aria-label="Copy PowerShell code" hidden="">Copy</button></div><pre><code class="language-powershell">py -3.10 --version
+py -3.10 -c "import struct; print('Python bits:', struct.calcsize('P') * 8)"
+py -3.10 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+</code></pre>
+</div><p>Expect <code>Python 3.10.x</code> and <code>Python bits: 64</code>. If <code>py</code> is not found, check that Python and its launcher were installed, then reopen PowerShell. Create a fresh <code>.venv</code>; an environment copied from another computer is not portable. Activation is unnecessary because every command uses the environment's Python explicitly.</p>
+<h3 id="install-dependencies-choose-cuda-or-cpu">3. Install dependencies: choose CUDA or CPU</h3>
+<p><strong>NVIDIA GPU / CUDA route:</strong> confirm that the installed NVIDIA driver sees a CUDA-compatible GPU, then install the CUDA 12.1 build used by the project:</p>
+<div class="code-panel"><div class="code-toolbar"><span class="code-language">PowerShell</span><button type="button" class="copy-button" aria-label="Copy PowerShell code" hidden="">Copy</button></div><pre><code class="language-powershell">nvidia-smi
+.\.venv\Scripts\python.exe -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+</code></pre>
+</div><p><strong>CPU alternative:</strong> in a fresh environment, use this command instead of the CUDA install above:</p>
+<div class="code-panel"><div class="code-toolbar"><span class="code-language">PowerShell</span><button type="button" class="copy-button" aria-label="Copy PowerShell code" hidden="">Copy</button></div><pre><code class="language-powershell">.\.venv\Scripts\python.exe -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+</code></pre>
+</div><p>After <strong>one</strong> of those choices, install the remaining pinned packages and check them:</p>
+<div class="code-panel"><div class="code-toolbar"><span class="code-language">PowerShell</span><button type="button" class="copy-button" aria-label="Copy PowerShell code" hidden="">Copy</button></div><pre><code class="language-powershell">.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv\Scripts\python.exe -m pip check
+.\.venv\Scripts\python.exe -c "import torch; print('PyTorch:', torch.__version__); print('Wheel CUDA:', torch.version.cuda); print('CUDA available:', torch.cuda.is_available()); print('Device:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU')"
+</code></pre>
+</div><p>The CUDA route should report <code>2.5.1+cu121</code>, <code>12.1</code>, <code>True</code> and the NVIDIA GPU name. If CUDA is unavailable, inspect the driver and installed wheel before proceeding with GPU inference. The CPU route should report <code>CUDA available: False</code> and <code>Device: CPU</code>. The inference scripts select CUDA automatically when available and otherwise use CPU; they have no <code>--device</code> option. CPU execution and numerical agreement on another machine are not yet validated.</p>
+<p>The wheel choices follow the <a href="https://pytorch.org/get-started/previous-versions/#v251">official PyTorch 2.5.1 installation instructions</a>. This project does not require <code>torchvision</code> or <code>torchaudio</code>. Initial package installation requires an internet connection and downloads a large PyTorch wheel.</p>
+<h3 id="run-the-tests">4. Run the tests</h3>
+<div class="code-panel"><div class="code-toolbar"><span class="code-language">PowerShell</span><button type="button" class="copy-button" aria-label="Copy PowerShell code" hidden="">Copy</button></div><pre><code class="language-powershell">.\.venv\Scripts\python.exe -B -m pytest -q -p no:cacheprovider
+</code></pre>
+</div><p>Ordinary tests use synthetic fixtures and do not retrain models on MEG. A source-only export previously passed <strong>69 tests with one expected external-artifact skip</strong>; the restored local project passed all <strong>70</strong>. A passing unit suite alone does not establish that real-data inference is ready. Continue below only if you need the dataset and historical runs.</p>
+</section><section id="included-trained-weights" class="doc-section" aria-labelledby="included-trained-weights-heading" data-section="04"><h2 id="included-trained-weights-heading" data-number="04">Included trained weights</h2>
+<p>These are <strong>our project's trained encoders</strong>, not downloaded pretrained models. Only the selected <code>best.pt</code> state dictionaries are bundled, renamed without changing their bytes:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Included trained weights table"><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Files</th>
+<th style="text-align: right;">Total size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Siamese CNN, V1</td>
+<td><code>weights/v1/fold_00.pt</code> … <code>fold_05.pt</code></td>
+<td style="text-align: right;">2,517,354 bytes</td>
+</tr>
+<tr>
+<td>EEGNet, V2</td>
+<td><code>weights/eegnet/fold_00.pt</code> … <code>fold_05.pt</code></td>
+<td style="text-align: right;">366,408 bytes</td>
+</tr>
+<tr>
+<td>Graph, V2</td>
+<td><code>weights/graph/fold_00.pt</code> … <code>fold_05.pt</code></td>
+<td style="text-align: right;">417,024 bytes</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>18 checkpoints</strong></td>
+<td style="text-align: right;"><strong>3.30 MB</strong></td>
+</tr>
+</tbody>
+</table>
+</div><p><a href="weights/manifest.json"><code>weights/manifest.json</code></a> binds every file to its historical SHA-256. All 18 checkpoints passed finite-tensor checks and strict loading into the matching architecture. They contain model parameters and ordinary buffers, not participant tables, personal templates or saved signal embeddings. The phase reference has no learned checkpoint.</p>
+<p>Read a state dictionary with the pinned PyTorch version:</p>
+<div class="code-panel"><div class="code-toolbar"><span class="code-language">Python</span><button type="button" class="copy-button" aria-label="Copy Python code" hidden="">Copy</button></div><pre><code class="language-python">import torch
+
+state = torch.load(
+    "weights/eegnet/fold_00.pt",
+    map_location="cpu",
+    weights_only=True,
+)
+</code></pre>
+</div><p>Weights alone are not a complete calibrated verification package: real MEG inference also needs compatible preprocessing, enrollment inputs, protocols and saved DEV thresholds. See <a href="weights/README.md">weight details</a> and <a href="docs/EXTERNAL_ARTIFACTS.md">external artifacts</a>.</p>
+</section><section id="results" class="doc-section" aria-labelledby="results-heading" data-section="05"><h2 id="results-heading" data-number="05">Results</h2>
+<p><strong>Static verification, 30-second queries. HTER (%) — lower is better.</strong></p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Results table"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th style="text-align: right;">V1: 240 s enrollment</th>
+<th style="text-align: right;">V2: 30 s enrollment</th>
+<th style="text-align: right;">V2: 240 s enrollment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase / coherency</td>
+<td style="text-align: right;"><strong>6.23</strong></td>
+<td style="text-align: right;"><strong>10.94</strong></td>
+<td style="text-align: right;"><strong>6.83</strong></td>
+</tr>
+<tr>
+<td>Siamese CNN</td>
+<td style="text-align: right;">12.80</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>EEGNet-inspired encoder</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">13.95</td>
+<td style="text-align: right;">15.06</td>
+</tr>
+<tr>
+<td>Graph encoder</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">21.33</td>
+<td style="text-align: right;">18.52</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Compare methods within a column.</strong> V1 uses four fixed query starts; V2 uses every nonoverlapping interval. Their percentages are not a matched comparison across protocols. Stream results are a separate set of attempts and are available in <a href="results/v2_stream_summary.csv"><code>v2_stream_summary.csv</code></a>.</p>
+<p>FAR measures accepted impostor attempts; FRR measures rejected genuine attempts. <strong>HTER = (FAR + FRR) / 2.</strong> Decisions use each fold's DEV-selected threshold. ROC-AUC and diagnostic approximate EER are computed within folds and then averaged; TEST EER does not select the operating threshold.</p>
+<p>The phase reference outperformed the tested trained encoders in these static settings. This is an observed result, not a claim that deep learning must generally perform worse.</p>
+<p class="callout notice">These are <strong>exploratory results on a previously studied dataset</strong>. Attempts share participants and signal intervals; TRAIN folds overlap. They do not establish independent external validation, long-term adaptation, resistance to unseen attacks or performance on other populations/devices.</p>
+<p>Sources: <a href="results/v1_summary.csv">V1 aggregates</a>, <a href="results/v2_static_summary.csv">V2 static aggregates</a>, <a href="docs/PROTOCOL.md">protocol</a>.</p>
+</section><section id="dataset-access" class="doc-section" aria-labelledby="dataset-access-heading" data-section="06"><h2 id="dataset-access-heading" data-number="06">Dataset access</h2>
+<p class="callout email-note"><strong>The link to the dataset will be sent by email.</strong></p>
+<ul>
+<li>Access instructions and applicable conditions: <code>[ADD_ACCESS_INSTRUCTIONS]</code></li>
+<li>Original source and exact release, when confirmed: <code>[ADD_SOURCE_AND_RELEASE]</code></li>
+<li>Dataset citation / DOI: <code>[ADD_DATASET_CITATION]</code></li>
+</ul>
+<p>The remaining metadata fields are intentionally unfilled. Dataset access conditions remain separate from authorship of the trained model weights.</p>
+<p>Extract the authorized dataset beside the repository, without an extra nested directory:</p>
+<div class="code-panel"><div class="code-toolbar"><span class="code-language">Folder layout</span><button type="button" class="copy-button" aria-label="Copy Folder layout code" hidden="">Copy</button></div><pre><code class="language-text">parent/
+  omega-meg-verification-publication/
+  omega_student_broadband_T260_v1/
+    cache/                   # 120 source NPY arrays
+    recording_index.csv
+    cache_manifest.csv
+    channels.txt
+    protocol_FROZEN.json
+    README.txt
+  deep_learning_extension/   # required for artifact restoration / inference examples
+</code></pre>
+</div><p>The local export has 120 float32 arrays of shape <code>(260, 33280)</code>: 260 seconds at 128 Hz, including context around the central 240 seconds. Its exact upstream release is not documented locally. A different download/release is not guaranteed to match the frozen hashes. Do not commit recordings, participant/session maps or individual scores.</p>
+<p><strong>The bundled offline demo and ordinary unit tests do not require this dataset.</strong></p>
+<p>For the documented real-data examples, obtain <strong>both</strong> the compatible dataset above and the private historical <code>deep_learning_extension</code> archive. The dataset link will be sent by email; no archive download link is supplied. A new user must obtain both inputs from the project owner before proceeding. The bundled <code>weights/</code> directory does not replace the protocols, DEV thresholds, saved scores or feature caches in that archive.</p>
+</section><section id="reproducing-the-saved-experiments" class="doc-section" aria-labelledby="reproducing-the-saved-experiments-heading" data-section="07"><h2 id="reproducing-the-saved-experiments-heading" data-number="07">Reproducing the saved experiments</h2>
+<h3 id="restore-the-run-artifacts">5. Restore the run artifacts</h3>
+<p>Prerequisites: complete Steps 1-4, place the compatible dataset beside the project as shown above, and make the historical archive available. Check the default locations:</p>
+<div class="code-panel"><div class="code-toolbar"><span class="code-language">PowerShell</span><button type="button" class="copy-button" aria-label="Copy PowerShell code" hidden="">Copy</button></div><pre><code class="language-powershell">Test-Path ..\omega_student_broadband_T260_v1\recording_index.csv
+Test-Path ..\deep_learning_extension\outputs\verification_v1\protocol.json
+Test-Path ..\deep_learning_extension\outputs\adaptive_v2\protocol.json
+</code></pre>
+</div><p>All three should return <code>True</code>. Restore the pinned run artifacts and three example feature caches. Run the plan first to see file count and bytes without copying:</p>
+<div class="code-panel"><div class="code-toolbar"><span class="code-language">PowerShell</span><button type="button" class="copy-button" aria-label="Copy PowerShell code" hidden="">Copy</button></div><pre><code class="language-powershell">.\.venv\Scripts\python.exe -B tools\restore_results.py --include-example-cache --plan
+.\.venv\Scripts\python.exe -B tools\restore_results.py --include-example-cache
+</code></pre>
+</div><p>The default archive is <code>..\deep_learning_extension</code>. If it is elsewhere, add <code>--archive-root 'D:\your-archive\deep_learning_extension'</code> to <strong>both</strong> restore commands, replacing that example with its actual location. A successful copy prints a JSON <code>receipt</code>; it creates <code>outputs/verification_v1</code> and <code>outputs/adaptive_v2</code> inside this checkout. The selected package is approximately 285 MB. Differing occupied files are refused; historical files are copied byte-for-byte.</p>
+<h3 id="verify-the-saved-results">6. Verify the saved results</h3>
+<div class="code-panel"><div class="code-toolbar"><span class="code-language">PowerShell</span><button type="button" class="copy-button" aria-label="Copy PowerShell code" hidden="">Copy</button></div><pre><code class="language-powershell">.\.venv\Scripts\python.exe -B tools\verify_results.py
+</code></pre>
+</div><p>Expect JSON with <code>"status": "passed"</code>, <code>"aggregate_tables_reproduced": 3</code>, <code>"training": false</code> and <code>"neural_inference": false</code>. This recalculates saved metrics and V2 streams from saved scores/embeddings. It does not generate fresh neural predictions.</p>
+<h3 id="run-real-inference-on-an-existing-held-out-example">7. Run real inference on an existing held-out example</h3>
+<p>These commands use <code>best.pt</code>, DEV thresholds and protocols from the <strong>restored outputs</strong>, rather than reading <code>weights/</code> directly. V1 also checks the original recording and saved evaluation row. Keep the dataset at the documented sibling location; changing historical manifests or disabling hash checks is not a supported relocation method.</p>
+<p>Obtain the first fold's example identities from the private protocol, then run one genuine claim for each model:</p>
+<div class="code-panel"><div class="code-toolbar"><span class="code-language">PowerShell</span><button type="button" class="copy-button" aria-label="Copy PowerShell code" hidden="">Copy</button></div><pre><code class="language-powershell">$ids = (Get-Content .\outputs\verification_v1\protocol.json -Raw | ConvertFrom-Json).folds[0].test_subjects
+$claimed = $ids[0]
+$source = $ids[0]  # use $ids[1] for an impostor query
+
+.\.venv\Scripts\python.exe -B scripts\14_verify_claim.py --fold 0 --claimed $claimed --source $source --duration 30 --start 0
+.\.venv\Scripts\python.exe -B scripts\18_verify_adaptive_claim.py --model eegnet --fold 0 --claimed $claimed --source $source --enrollment 30 --duration 30 --start 0 --policy static
+.\.venv\Scripts\python.exe -B scripts\18_verify_adaptive_claim.py --model graph --fold 0 --claimed $claimed --source $source --enrollment 30 --duration 30 --start 0 --policy static
+</code></pre>
+</div><p>Each command prints JSON including <code>device</code>, score, DEV threshold and accept/reject decision. V1 reports <code>matches_saved_decisions: true</code> after checking its phase/CNN predictions against the saved row; V2 reports <code>score</code>, <code>threshold</code>, <code>accepted</code> and <code>updated</code>. To try an impostor claim, set <code>$source = $ids[1]</code> and repeat the same three commands. These two IDs are covered by the restored example caches; the caches do not cover all participants.</p>
+<p>V1 processes allowed windows from source recordings. V2 runs its encoder on verified cached windows. <code>static</code> does not update the reference; no profile is persisted without <code>--profile</code>. This is actual encoder computation, unlike the browser demo.</p>
+<p>If a file is missing, check the dataset/archive layout and restore step. A hash/frozen-input mismatch requires the matching original input, not edits to an old manifest or threshold.</p>
+<h3 id="optional-new-training">Optional new training</h3>
+<p>Training is separate from the demo, tests and saved-result checks. Stages must be explicit, and new experiments need a new output directory:</p>
+<div class="code-panel"><div class="code-toolbar"><span class="code-language">PowerShell</span><button type="button" class="copy-button" aria-label="Copy PowerShell code" hidden="">Copy</button></div><pre><code class="language-powershell">.\.venv\Scripts\python.exe -B scripts\11_run_verification.py --out outputs\v1_new --stage prepare
+# Only when new training is intended:
+.\.venv\Scripts\python.exe -B scripts\11_run_verification.py --out outputs\v1_new --stage train
+</code></pre>
+</div><p>V2 additionally needs the complete compatible V1 feature cache named by <code>base_run</code>; three example caches are insufficient. Never edit historical manifests or disable hash/freeze checks to load a changed experiment. Script numbers do not define a mandatory sequential pipeline.</p>
+</section><section id="verification-status-and-boundaries" class="doc-section" aria-labelledby="verification-status-and-boundaries-heading" data-section="08"><h2 id="verification-status-and-boundaries-heading" data-number="08">Verification status and boundaries</h2>
+<ul>
+<li><strong>70 tests passed</strong> in the available host environment.</li>
+<li>The offline demo controller passed <strong>75 aggregate choices and four synthetic examples</strong>.</li>
+<li>V1, EEGNet and Graph completed real CUDA inference smoke tests on available authorized inputs.</li>
+<li>All <strong>21 frozen core hashes</strong> remain unchanged; all <strong>18 bundled weight hashes</strong> match their historical checkpoints.</li>
+<li>Saved verification reproduced 54 V1 metric rows, 180 V2 static metric rows and 129,600 V2 stream decisions.</li>
+</ul>
+<p class="callout test-machine"><strong>Test machine used for the 2026-11-04 checks:</strong> Windows, Python 3.10.11 x64 and an NVIDIA RTX 3060 Ti (8 GB), driver 560.94, with PyTorch 2.5.1+cu121. This records the validation environment; that GPU model and memory size are not project requirements. V1/EEGNet/Graph inference and a simple tensor operation explicitly ran on CUDA. The 70-test suite, <code>pip check</code> and artifact restore plan passed on the same host, without a claim that every test used the GPU; the plan found 260 files (284,778,686 bytes). A fresh venv with pip was also created, and all 12 PowerShell command blocks parsed successfully.</p>
+<p class="callout pending"><strong>Not yet verified:</strong> installing all dependencies into that fresh venv, the CPU installation/inference route, another computer, and visual browser behavior. The practical model/test checks reused the existing Python environment with the documented temporary SciPy workaround; no fresh dependency-installation success is claimed. See <a href="docs/VALIDATION.md">validation evidence</a>.</p>
+<p>Hybrid, E/L/F, legacy identification, individual-score replay and old presentation/migration tools are outside this public subset. Their original materials remain in the separate unchanged <a href="docs/ARCHIVE.md">historical archive</a>. Full phase DEV reconstruction for the historical V2 run remains an archived workflow; its phase thresholds and TEST decisions are still checked.</p>
+</section><section id="repository-guide" class="doc-section" aria-labelledby="repository-guide-heading" data-section="09"><h2 id="repository-guide-heading" data-number="09">Repository guide</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Repository guide table"><table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>demo/</code></td>
+<td>Self-contained aggregate/synthetic demonstration</td>
+</tr>
+<tr>
+<td><code>weights/</code></td>
+<td>18 project-trained encoders and checksum manifest</td>
+</tr>
+<tr>
+<td><code>src/omega_dl/</code></td>
+<td>V1/V2 scientific implementation</td>
+</tr>
+<tr>
+<td><code>configs/</code></td>
+<td>V1/V2 configurations</td>
+</tr>
+<tr>
+<td><code>results/</code></td>
+<td>Saved aggregate CSVs</td>
+</tr>
+<tr>
+<td><code>scripts/</code></td>
+<td>Experiment, reporting and inference entry points</td>
+</tr>
+<tr>
+<td><code>tools/</code></td>
+<td>Artifact preparation and integrity checks</td>
+</tr>
+<tr>
+<td><code>tests/</code>, <code>docs/</code></td>
+<td>Tests, protocol and scope evidence</td>
+</tr>
+</tbody>
+</table>
+</div><p>The compatibility assets <code>models/autoencoder.py</code> and <code>models/heads.py</code> remain because the original V1 loader hashes the complete models directory. They are not additional advertised experiments. See <a href="docs/FROZEN_CORE.md">frozen-core compatibility</a>.</p>
+</section><section id="license" class="doc-section" aria-labelledby="license-heading" data-section="10"><h2 id="license-heading" data-number="10">License</h2>
+<p>The project owner still needs to select the code/model license and confirm the reference-code redistribution terms before external release. No license is invented here. Including our own model weights does not grant permission to redistribute the source dataset or participant-level records.</p>
+</section></article><footer class="page-footer"><span>MEG Verification · Educational project · V1 / V2</span><span><a href="README.md">Markdown source</a> &nbsp; / &nbsp; <a href="#top">Back to top ↑</a></span></footer></main></div>
+<script>
+(() => {
+  const panels = document.querySelectorAll('.code-panel');
+  for (const panel of panels) {
+    const button = panel.querySelector('.copy-button');
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      const code = panel.querySelector('code');
+      try {
+        if (!navigator.clipboard || !window.isSecureContext) throw new Error('select');
+        await navigator.clipboard.writeText(code.textContent);
+        button.textContent = 'Copied';
+      } catch (_) {
+        const range = document.createRange(); range.selectNodeContents(code);
+        const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+        button.textContent = 'Selected: Ctrl+C';
+      }
+      window.setTimeout(() => {button.textContent = 'Copy';}, 2200);
+    });
+  }
+  const progress = document.querySelector('.progress');
+  const update = () => {
+    const range = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (range > 0 ? 100 * window.scrollY / range : 0) + '%';
+  };
+  window.addEventListener('scroll', update, {passive:true}); update();
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) if (entry.isIntersecting) {
+        for (const link of document.querySelectorAll('.section-nav a')) {
+          const active = link.getAttribute('href') === '#' + entry.target.id;
+          link.classList.toggle('active', active);
+          if (active) link.setAttribute('aria-current','location'); else link.removeAttribute('aria-current');
+        }
+      }
+    }, {rootMargin:'-10% 0px -72% 0px'});
+    document.querySelectorAll('.doc-section').forEach(section => observer.observe(section));
+  }
+})();
+</script></body></html>
