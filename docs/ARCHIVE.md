@@ -31,3 +31,5 @@ No license is invented for the project, reference asset or private dataset.
 Before external release, the owner must determine redistribution terms and how
 authorized reviewers obtain the external artifacts. This is a local preparation,
 not a public data/weights release.
+
+The bundled `demo/index.html` now works without these private artifacts: it uses public aggregates and explicitly synthetic examples. The original individual-score replay and the trained-weight release candidate remain Git-ignored pending the distribution review in [PUBLIC_ARTIFACTS.md](PUBLIC_ARTIFACTS.md).

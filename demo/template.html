@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MEG · учебное демо V1/V2</title>
+<style>
+:root{color-scheme:light;--ink:#18333e;--muted:#526970;--teal:#116d70;--line:#d7e3e5}
+*{box-sizing:border-box}body{margin:0;background:#f1f5f5;color:var(--ink);font:17px/1.55 system-ui,sans-serif}
+main{max-width:1100px;margin:auto;padding:32px 22px 60px}h1{font-size:clamp(30px,5vw,44px);line-height:1.1;margin:12px 0 20px}
+h2{font-size:24px;margin:0 0 12px}.eyebrow{letter-spacing:.1em;font-size:13px;font-weight:700;color:var(--teal)}
+.intro{max-width:850px}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:24px;margin-top:24px}
+.note{border-left:4px solid var(--teal);padding:12px 16px;background:#e6f1f0}.muted,small{color:var(--muted)}
+.controls{display:flex;gap:16px;flex-wrap:wrap;margin:22px 0}label{display:flex;flex-direction:column;gap:7px;font-size:14px;font-weight:600}
+select,button,input[type=number]{font:inherit;padding:10px 12px;border:1px solid #a8bfc3;border-radius:7px;background:white;color:var(--ink)}
+button{cursor:pointer}button:hover{border-color:var(--teal);background:#edf5f4}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #74bfc0;outline-offset:2px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}.metric{padding:18px;background:#f2f7f7;border-radius:9px}
+.metric span{display:block;font-size:13px;color:var(--muted)}.metric strong{font-size:30px;letter-spacing:-.03em}.buttons{display:flex;gap:10px;flex-wrap:wrap}
+.decision{font-size:25px;font-weight:700;margin:20px 0 5px}.accept{color:#116c48}.reject{color:#aa3544}.toy{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+input[type=range]{width:100%;accent-color:var(--teal)}output{font-variant-numeric:tabular-nums}code{background:#e9f0f0;padding:2px 5px;border-radius:4px}
+footer{margin-top:28px;font-size:14px;color:var(--muted)}@media(max-width:650px){.toy{grid-template-columns:1fr}.card{padding:18px}main{padding:24px 14px}.controls>label{width:100%}}
+</style></head><body><main>
+<div class="eyebrow">MEG VERIFICATION · УЧЕБНЫЙ ПРОЕКТ · ОФЛАЙН</div>
+<h1>Как проверяется заявленная личность</h1>
+<p class="intro">Изучите сохранённые агрегированные результаты V1/V2 и правило принятия решения. Страница работает из скачанной папки без Python, GPU, весов и сети.</p>
+<p class="note"><strong>Два разных вида информации:</strong> блок результатов содержит настоящие агрегаты экспериментов. Примеры score ниже синтетические. Здесь нет исходных MEG-записей, индивидуальных TEST-решений или нейросетевого inference.</p>
+<section class="card" aria-labelledby="results-title"><h2 id="results-title">Сохранённые результаты</h2>
+<p class="muted">FAR — принят чужой запрос. FRR — отклонён свой. HTER — их среднее; меньше лучше. AUC усреднена по folds. Это не вероятность правильного ответа на один запрос.</p>
+<div class="controls">
+<label>Протокол<select id="dataset"><option value="v1">V1 · четыре начала запроса</option><option value="v2_static">V2 · static all-pairs</option><option value="v2_stream">V2 · хронологические streams</option></select></label>
+<label>Метод<select id="method"></select></label>
+<label>Запрос<select id="duration"></select></label>
+<label>Эталон<select id="enrollment"></select></label>
+<label>Обновление эталона<select id="policy"></select></label>
+</div>
+<div class="metrics"><div class="metric"><span>HTER</span><strong id="hter"></strong></div><div class="metric"><span>FAR</span><strong id="far"></strong></div><div class="metric"><span>FRR</span><strong id="frr"></strong></div><div class="metric"><span>Mean fold AUC</span><strong id="auc"></strong></div></div>
+<p id="counts"></p><p id="scope" class="muted"></p>
+<small>Шесть folds по людям: 40 TRAIN / 10 DEV / 10 TEST; две сессии человека остаются в одной части. Пороги выбирались на DEV. Датасет ранее изучался: это исследовательская cross-validation, не новая независимая оценка. V1/V2 и stream/static имеют разные сетки попыток.</small>
+</section>
+<section class="card" aria-labelledby="toy-title"><h2 id="toy-title">Синтетический пример решения</h2>
+<p>Это учебные числа, <strong>не score участника и не сохранённый DEV-порог</strong>. Реальная модель вычисляет score по сигналу; в эксперименте DEV-порог зависит от метода, fold и длительности. Здесь оба числа можно менять вручную.</p>
+<div class="toy"><label>Учебный score: <output id="score-value"></output><input id="score" type="range" min="-1" max="1" step="0.01" value="0.82"></label>
+<label>Учебный порог: <output id="threshold-value"></output><input id="threshold" type="range" min="-1" max="1" step="0.01" value="0.60"></label></div>
+<div class="controls"><label>Истина только для пояснения<select id="truth"><option value="genuine">Свой запрос</option><option value="impostor">Чужой запрос</option></select></label></div>
+<div class="buttons"><button id="genuine" type="button">Свой: принят</button><button id="impostor" type="button">Чужой: отклонён</button><button id="false-accept" type="button">Ошибка: принят чужой</button><button id="false-reject" type="button">Ошибка: отклонён свой</button></div>
+<div id="decision" class="decision" aria-live="polite"></div><p id="explanation"></p>
+<small>Правило: <code>score &gt;= threshold</code> → принять. Истина не входит в это правило: она нужна лишь для оценки ошибки. Similarity score не является вероятностью.</small>
+</section>
+<footer>Источник агрегатов: три CSV в <code>results/</code> этого репозитория. Демо не меняет научные результаты или пороги. Полный исторический replay и обученные веса пока остаются локальными кандидатами до подтверждения условий распространения.</footer>
+</main><script id="public-aggregate-data" type="application/json">__PUBLIC_AGGREGATES__</script>
+<script>
+'use strict';
+const METHOD_LABELS={phase:'Phase / coherency',cnn:'Siamese CNN',untrained:'CNN · до обучения',eegnet:'EEGNet',eegnet_initial:'EEGNet · до обучения',graph:'Graph',graph_initial:'Graph · до обучения'};
+const POLICY_LABELS={static:'Без обновлений',accepted:'После принятия',guarded:'С защитным порогом'};
+function decide(score,threshold,genuine){
+  if(!Number.isFinite(score)||!Number.isFinite(threshold))throw new Error('Finite numbers required');
+  const accepted=score>=threshold;
+  return {accepted,correct:accepted===genuine,error:accepted&&!genuine?'FAR':!accepted&&genuine?'FRR':null};
+}
+function selectAggregate(data,choice){
+  const rows=data.tables[choice.dataset].filter(r=>r.method===choice.method&&r.duration_seconds===Number(choice.duration)&&(r.enrollment_seconds||240)===Number(choice.enrollment)&&(!r.policy||r.policy===choice.policy));
+  if(rows.length!==1)throw new Error('Expected one aggregate row');return rows[0];
+}
+function initDemo(doc,data){
+  const el=id=>doc.getElementById(id);
+  const pct=value=>(100*value).toFixed(2)+'%';
+  function options(id,values,labels){
+    const select=el(id),previous=select.value;select.replaceChildren();
+    for(const value of [...new Set(values)]){const option=doc.createElement('option');option.value=String(value);option.textContent=labels?labels[value]:value+' s';select.appendChild(option);}
+    if([...select.options].some(option=>option.value===previous))select.value=previous;
+  }
+  function render(){
+    const dataset=el('dataset').value;
+    const row=selectAggregate(data,{dataset,method:el('method').value,duration:el('duration').value,enrollment:el('enrollment').value,policy:el('policy').value});
+    for(const key of ['hter','far','frr'])el(key).textContent=pct(row[key.toUpperCase()]);
+    el('auc').textContent=row.mean_fold_AUC===undefined?'—':row.mean_fold_AUC.toFixed(4);
+    el('counts').textContent='Приняты чужие: '+row.false_accepts+' / '+row.n_impostor+'. Отклонены свои: '+row.false_rejects+' / '+row.n_genuine+'.';
+    el('scope').textContent=dataset==='v1'?'V1: 240 s enrollment; четыре начала 0/60/120/180 s.':dataset==='v2_static'?'V2 static: все неперекрывающиеся запросы.':'V2 streams: сбалансированные хронологические попытки; повторения зависимы. AUC в этой таблице не рассчитывалась.';
+  }
+  function datasetChanged(){
+    const rows=data.tables[el('dataset').value];
+    options('method',rows.map(r=>r.method),METHOD_LABELS);
+    options('duration',rows.map(r=>r.duration_seconds));
+    options('enrollment',rows.map(r=>r.enrollment_seconds||240));
+    const policies=rows.map(r=>r.policy||'static');options('policy',policies,POLICY_LABELS);
+    el('policy').disabled=el('dataset').value!=='v2_stream';render();
+  }
+  function renderToy(){
+    const score=Number(el('score').value),threshold=Number(el('threshold').value),genuine=el('truth').value==='genuine';
+    const result=decide(score,threshold,genuine);
+    el('score-value').textContent=score.toFixed(2);el('threshold-value').textContent=threshold.toFixed(2);
+    el('decision').textContent=(result.accepted?'ПРИНЯТЬ':'ОТКЛОНИТЬ')+' · синтетический пример';
+    el('decision').className='decision '+(result.accepted?'accept':'reject');
+    el('explanation').textContent=result.error==='FAR'?'Ошибка FAR: чужой запрос принят.':result.error==='FRR'?'Ошибка FRR: свой запрос отклонён.':'Верное решение для заданного учебного примера.';
+  }
+  function example(score,truth){el('score').value=String(score);el('threshold').value='0.60';el('truth').value=truth;renderToy();}
+  el('dataset').addEventListener('change',datasetChanged);
+  for(const id of ['method','duration','enrollment','policy'])el(id).addEventListener('change',render);
+  for(const id of ['score','threshold'])el(id).addEventListener('input',renderToy);
+  el('truth').addEventListener('change',renderToy);
+  el('genuine').addEventListener('click',()=>example(.82,'genuine'));
+  el('impostor').addEventListener('click',()=>example(.22,'impostor'));
+  el('false-accept').addEventListener('click',()=>example(.72,'impostor'));
+  el('false-reject').addEventListener('click',()=>example(.22,'genuine'));
+  datasetChanged();renderToy();return {datasetChanged,render,renderToy};
+}
+if(typeof module!=='undefined')module.exports={decide,selectAggregate,initDemo};
+if(typeof document!=='undefined')initDemo(document,JSON.parse(document.getElementById('public-aggregate-data').textContent));
+</script></body></html>

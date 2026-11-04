@@ -29,3 +29,7 @@ Tracked registries: `artifacts/FROZEN_CORE.json`, `artifacts/frozen_runs.json`, 
 The 82 staged files round-tripped through `git checkout-index` byte-for-byte. A separate checkout on C: with no adjacent dataset or historical archive passed **67 tests, 1 expected external-artifact skip** in 17.31 seconds. It used the same documented validation environment/temporary SciPy overlay, not a newly installed environment. The first export harness attempt omitted the explicit basetemp parent; after fixing that harness setup, the complete suite passed. Public source did not require a change for this.
 
 The staged artifact scan found no forbidden arrays/weights, participant-level CSVs, user-machine paths or credential-pattern hits. This is a pattern/allowlist check, not an exhaustive proof against every possible encoded secret.
+
+## Public demo update
+
+See [PUBLIC_DEMO_VALIDATION.md](PUBLIC_DEMO_VALIDATION.md) for the later bundled public demo, aggregate-only privacy tests and trained-weight release review. Earlier checks above refer to the private historical replay and remain preserved as historical evidence.

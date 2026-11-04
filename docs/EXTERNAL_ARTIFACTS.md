@@ -35,3 +35,5 @@ V1 and V2 inference CLI perform real encoder computation. V2 uses verified cache
 windows; missing caches can be generated inside the restored output, never by
 writing into the source archive. GPU/CPU behavior and numerical agreement still
 need checking on each target machine. A source-PC venv is not a portable artifact.
+
+The bundled `demo/index.html` now works without these private artifacts: it uses public aggregates and explicitly synthetic examples. The original individual-score replay and the trained-weight release candidate remain Git-ignored pending the distribution review in [PUBLIC_ARTIFACTS.md](PUBLIC_ARTIFACTS.md).
